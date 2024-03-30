@@ -40,3 +40,4 @@ async def delete_a_todo(todo_id:int):
         return {"id":"not found"}
     session.delete(result)
     return result
+
