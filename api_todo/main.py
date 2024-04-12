@@ -30,7 +30,11 @@ async def get_all_todo(todo_id:int):
 
 @app.put("/todos/{todo_id}")
 async def get_all_todos(todo_id:int):
-    pass
+    statement = select(Todo).where(Todo.id == todo_id)
+    result = session.exec(statement)
+    result.title = Todo.title
+    result.description = Todo.description
+    session.commit()
 
 @app.delete("/todos/{todo_id}")
 async def delete_a_todo(todo_id:int):
